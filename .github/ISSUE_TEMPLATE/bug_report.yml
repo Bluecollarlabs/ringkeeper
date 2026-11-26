@@ -1,0 +1,44 @@
+name: Bug report
+description: Something doesn't work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not paste real health data, database files, ring serials, keys, tokens, host names or IP addresses.**
+        Replace them with `XXXX`. Screenshots: use the demo data.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, what you got instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: part
+    attributes:
+      label: Which part?
+      options: [Android app, PC sync (CLI), Ingest server, Analysis / scores, Dashboard, Local AI, Setup / docs, Other]
+    validations:
+      required: true
+  - type: input
+    id: ring
+    attributes:
+      label: Ring generation + firmware
+      placeholder: "e.g. Gen 5, fw 2.1.x"
+  - type: input
+    id: env
+    attributes:
+      label: PC OS / BlueZ version / phone model + Android version
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs (scrubbed)
+      render: text
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed health data, serials, keys, tokens, host names and IPs from this report.
+          required: true

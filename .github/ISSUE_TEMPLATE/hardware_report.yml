@@ -1,0 +1,41 @@
+name: Hardware report
+description: Tell us how RingKeeper works with your ring / phone
+labels: [hardware]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks! These reports tell everyone what's known to work. **No serial numbers or health data, please.**"
+  - type: dropdown
+    id: gen
+    attributes:
+      label: Ring generation
+      options: [Gen 3, Gen 4, Gen 5, Other / not sure]
+    validations:
+      required: true
+  - type: input
+    id: fw
+    attributes:
+      label: Ring firmware version
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Setup
+      options: [Phone mode (Android app), PC mode (Linux CLI), Both]
+  - type: input
+    id: device
+    attributes:
+      label: Phone model + Android version, or PC distro + BlueZ version
+  - type: checkboxes
+    id: works
+    attributes:
+      label: What worked?
+      options:
+        - label: Pairing
+        - label: Sync (events downloaded)
+        - label: Background sync over a full day
+        - label: Upload to the PC
+        - label: Nightly metrics / dashboard look plausible
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / problems

@@ -1,0 +1,22 @@
+diff --git i/crates/oura-link/src/ble.rs w/crates/oura-link/src/ble.rs
+index af0d223..48ff4a6 100644
+--- i/crates/oura-link/src/ble.rs
++++ w/crates/oura-link/src/ble.rs
+@@ -71,7 +71,7 @@ pub async fn scan(name_contains: &str, timeout: Duration) -> Result<Vec<Discover
+     let adapter = first_adapter().await?;
+     adapter
+         .start_scan(ScanFilter {
+-            services: vec![protocol::OURA_SERVICE],
++            services: Vec::new(), // ringkeeper: no UUID discovery filter (BlueZ 5.87 is_filter_match SIGSEGV, bluez#2282); service checked below
+         })
+         .await?;
+ 
+@@ -123,7 +123,7 @@ impl BleTransport {
+         let adapter = first_adapter().await?;
+         adapter
+             .start_scan(ScanFilter {
+-                services: vec![protocol::OURA_SERVICE],
++                services: Vec::new(), // ringkeeper: no UUID discovery filter (BlueZ 5.87 is_filter_match SIGSEGV, bluez#2282); service checked below
+             })
+             .await?;
+ 

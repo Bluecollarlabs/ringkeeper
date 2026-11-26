@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f17">
+<title>ringkeeper · UI mockup</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RingKeeper">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="styles.css?v=1795669065">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div>
+      <div class="eyebrow">ringkeeper</div>
+      <h1 id="title">Today</h1>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle light/dark theme"></button>
+      <button class="icon-btn" id="deviceBtn" aria-label="Ring &amp; device settings"></button>
+    </div>
+  </header>
+  <div class="demo-banner" role="note"><span class="dot"></span>Demo data &mdash; generated, not from a real ring</div>
+
+  <main>
+    <section class="screen" id="screen-today" data-title="Today"></section>
+    <section class="screen" id="screen-sleep" data-title="Sleep" hidden></section>
+    <section class="screen" id="screen-activity" data-title="Activity" hidden></section>
+    <section class="screen" id="screen-trends" data-title="Trends" hidden></section>
+    <section class="screen" id="screen-cycle" data-title="Cycle" hidden></section>
+    <section class="screen" id="screen-chat" data-title="Health AI" hidden></section>
+  </main>
+</div>
+
+<nav class="tabs" id="tabs" aria-label="Main"></nav>
+
+<div class="sheet-wrap" id="sheet" aria-hidden="true">
+  <div class="sheet-backdrop" data-close></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="Ring and device">
+    <div class="sheet-handle" data-close></div>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js?v=1795669065"></script>
+</body>
+</html>

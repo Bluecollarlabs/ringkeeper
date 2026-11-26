@@ -1,0 +1,3 @@
+[submodule "upstream/open_oura"]
+	path = upstream/open_oura
+	url = https://github.com/Th0rgal/open_oura

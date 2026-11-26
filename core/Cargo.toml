@@ -1,0 +1,47 @@
+[package]
+name = "ringkeeper_core"
+description = "UniFFI core for the RingKeeper Android app: ring session (pair/sync) over a Kotlin BLE transport + raw-event export for upload"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+# Standalone: not a member of the upstream open_oura workspace.
+[workspace]
+
+[lib]
+name = "ringkeeper_core"
+# cdylib → libouraandroid_core.so for Android (and library-mode bindgen); lib for host tests.
+crate-type = ["lib", "cdylib"]
+
+[dependencies]
+# open_oura by path: upstream/open_oura is a git submodule pinned at
+# e57c43ce5fe0cf9a646afa790bda3731be767507 (run scripts/fetch-upstream.sh; see TOOLCHAIN.md).
+oura-protocol = { path = "../upstream/open_oura/crates/oura-protocol" }
+oura-store = { path = "../upstream/open_oura/crates/oura-store" }
+# ring client + Transport trait WITHOUT btleplug: Kotlin supplies the BLE transport.
+oura-link = { path = "../upstream/open_oura/crates/oura-link", default-features = false }
+uniffi = { version = "0.28", features = ["cli", "tokio"] }
+tokio = { version = "1", features = ["sync", "rt", "rt-multi-thread", "macros", "time"] }
+async-trait = "0.1"
+getrandom = "0.2"
+thiserror = "1"
+serde_json = "1"
+hex = "0.4"
+# same version oura-store links (bundled on Android/host) → one sqlite.
+rusqlite = { version = "0.31" }
+
+[dev-dependencies]
+tempfile = "3"
+
+[[bin]]
+# cargo run --bin uniffi-bindgen -- generate --library <lib.so> --language kotlin --out-dir …
+name = "uniffi-bindgen"
+path = "uniffi-bindgen.rs"
+
+[profile.release]
+lto = true
+strip = true
+opt-level = "z"
+codegen-units = 1
+panic = "unwind"

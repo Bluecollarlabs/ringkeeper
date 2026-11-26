@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HTTPS only. The ingest endpoint is `tailscale serve` HTTPS
+     (https://your-server.your-tailnet.ts.net:8444, Let's Encrypt cert for the tailnet name),
+     so no cleartext exception is needed. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+</network-security-config>

@@ -1,0 +1,26 @@
+# systemd --user unit for the ringkeeper ingest service. NOT enabled.
+# Assumes the repo is checked out at ~/ringkeeper — adjust the paths below if not.
+# Install:  ln -s ~/ringkeeper/server/ringkeeper-ingest.service ~/.config/systemd/user/
+#           systemctl --user daemon-reload && systemctl --user enable --now ringkeeper-ingest
+[Unit]
+Description=RingKeeper ingest (POST /v1/events; loopback 127.0.0.1:8092, exposed via tailscale serve :8444)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/ringkeeper/server
+# Optional config (RINGKEEPER_INGEST_PORT etc.), see config.example.env
+EnvironmentFile=-%h/ringkeeper/ringkeeper.env
+ExecStart=/usr/bin/python3 -I %h/ringkeeper/server/ingest.py serve --host 127.0.0.1
+Restart=on-failure
+RestartSec=5
+UMask=0077
+# light sandboxing that works for user units
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ReadWritePaths=%h/ringkeeper/server/data
+MemoryMax=256M
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,37 @@
+RingKeeper
+Copyright (c) 2026 Blue Collar Labs and RingKeeper contributors
+Licensed under the MIT License (see LICENSE).
+
+This project builds on the following open-source work:
+
+open_oura — https://github.com/Th0rgal/open_oura
+  Copyright (c) 2026 Thomas Marchand (Th0rgal). MIT License.
+  Reverse-engineered Oura ring BLE protocol, link, storage and analysis crates.
+  Included as a git submodule (upstream/open_oura, pinned commit
+  e57c43ce5fe0cf9a646afa790bda3731be767507) and used by path from core/.
+  server/ingest.py reproduces the oura-store SQLite schema and server/event_names.py
+  mirrors oura-protocol's event-name table, both from that commit.
+  patches/0001-no-uuid-discovery-filter-bluez-2282.patch is a modification of
+  open_oura's crates/oura-link/src/ble.rs and is offered under the same MIT terms.
+
+open_health — https://github.com/Th0rgal/open_health
+  Copyright (c) 2026 Thomas Marchand (Th0rgal). MIT License.
+  core/ (the UniFFI RingSession / BleWriter design) is modelled on its
+  crates/oura-core. No code is vendored.
+
+Third-party build tooling (Gradle wrapper, Android Gradle Plugin, Kotlin, UniFFI and
+Rust crates listed in core/Cargo.lock) is used under the respective licenses.
+
+TRADEMARKS AND AFFILIATION
+"Oura" and "Oura Ring" are trademarks of Oura Health Oy. RingKeeper is an independent
+project and is not affiliated with, endorsed by, sponsored by, or supported by
+Oura Health Oy. The names are used only to identify compatible hardware.
+
+The ring's Bluetooth protocol was reverse-engineered by the open_oura project for
+interoperability with devices their owners own. RingKeeper does not include,
+decrypt, use, or redistribute any Oura proprietary software, firmware, algorithms,
+or machine-learning models.
+
+NOT A MEDICAL DEVICE. Fatigue and readiness outputs are for personal awareness only
+and are not a fitness-for-duty determination. Cycle tracking is for awareness only
+and is NOT a method of contraception.

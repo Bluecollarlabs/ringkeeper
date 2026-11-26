@@ -1,0 +1,5 @@
+[bindings.kotlin]
+package_name = "org.bluecollarlabs.ringkeeper.core"
+cdylib_name = "ringkeeper_core"
+# Android target: use android.system.SystemCleaner (API 33+) with JNA fallback guards
+android = true

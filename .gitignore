@@ -1,0 +1,29 @@
+# ---- personal data: NEVER commit ----
+secrets/
+data/
+*.key
+*.token
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+ringkeeper.env
+ui-mockup/real-data.json
+ui-mockup/real-data.json.tmp
+
+# ingest server
+server/tokens.json
+server/tokens.json.tmp
+server/data/
+
+# build outputs / caches
+target/
+*.apk
+*.aab
+.venv/
+__pycache__/
+*.pyc
+.mise/
+logs/
+*.log
+backups/
